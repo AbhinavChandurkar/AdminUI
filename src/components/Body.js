@@ -46,7 +46,7 @@ const Body = () => {
 
   //write logic to select all the user entry in the current page
   const handleAllSelect = () => {
-    const data = filteredData.slice(startIndex, endIndex);
+    const data = filteredData.slice(start, end);
 
     // Check if all users in the current page are selected
     const allSelected = data.every((user) => selectedId.includes(user.id));
@@ -74,19 +74,12 @@ const Body = () => {
     setSelectedId((prevArray) => [...prevArray, id]);
   };
 
-  //logic for deleting data on the same row
-  const handleRowDelete = (id) => {
-    setFiltredData(filteredData.filter((user) => user.id !== id));
-  };
-
   //Logic to remove multiple user entries by one button
   const handleDeleteSelected = () => {
     setFiltredData((item) =>
       item.filter((user) => !selectedId.includes(user.id))
     );
   };
-
-  const handleEdit = (id) => {};
 
   //Fetching the data from the api after all compoenets are loaded
   useEffect(() => {
@@ -134,8 +127,9 @@ const Body = () => {
               <UserTable
                 userData={filteredData.slice(start, end)}
                 selectedId={selectedId}
+                filteredData={filteredData}
+                setFiltredData={setFiltredData}
                 handleRowSelect={handleRowSelect}
-                handleRowDelete={handleRowDelete}
               />
             </TableBody>
           </Table>

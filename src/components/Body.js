@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import UserTable from "./UserTable";
+import SearchFeild from "./SearchFeild";
+
 import {
   TableContainer,
   Table,
@@ -8,7 +10,6 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  Paper,
   Box,
   Checkbox,
   Pagination,
@@ -19,14 +20,15 @@ import "./body.css";
 const Body = () => {
   const [userData, setUserData] = useState([]);
   const [selectedId, setSelectedId] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [filteredData, setFiltredData] = useState([]);
 
   /**
-   *
+   *  pagination hooks
    */
-  const [rowsPerPage, setRowsPerPage] = useState(10); // Step 1
-  const startIndex = (currentPage - 1) * rowsPerPage; // Step 2
-  const endIndex = currentPage * rowsPerPage;
+  const rowsPerPage = 10;
+  const [currentPage, setCurrentPage] = useState(1);
+  const start = (currentPage - 1) * rowsPerPage;
+  const end = currentPage * rowsPerPage;
 
   //Function to fetch tha user data from the given endpoint
   const getUserData = async () => {
@@ -35,12 +37,33 @@ const Body = () => {
         `https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json`
       );
       setUserData(response.data);
+      setFiltredData(response.data);
     } catch (error) {
+      //Add enque bar to show error message
       console.log(error);
     }
   };
 
-  const handleAllSelect = () => {};
+  //write logic to select all the user entry in the current page
+  const handleAllSelect = () => {
+    const data = filteredData.slice(startIndex, endIndex);
+
+    // Check if all users in the current page are selected
+    const allSelected = data.every((user) => selectedId.includes(user.id));
+
+    if (allSelected) {
+      // If all are selected, unselect them
+      setSelectedId((prevSelected) =>
+        prevSelected.filter((id) => !data.some((user) => user.id === id))
+      );
+    } else {
+      // If not all are selected, select them
+      setSelectedId((prevSelected) => [
+        ...prevSelected,
+        ...data.map((user) => user.id),
+      ]);
+    }
+  };
 
   //logic of selecting multipe row data
   const handleRowSelect = (id) => {
@@ -53,40 +76,63 @@ const Body = () => {
 
   //logic for deleting data on the same row
   const handleRowDelete = (id) => {
-    setUserData(userData.filter((user) => user.id !== id));
+    setFiltredData(filteredData.filter((user) => user.id !== id));
   };
 
+  //Logic to remove multiple user entries by one button
+  const handleDeleteSelected = () => {
+    setFiltredData((item) =>
+      item.filter((user) => !selectedId.includes(user.id))
+    );
+  };
+
+  const handleEdit = (id) => {};
+
+  //Fetching the data from the api after all compoenets are loaded
   useEffect(() => {
     getUserData();
   }, []);
 
   return (
-    <Box p={3} m={10}>
+    <Box p={3} m={2}>
       <Box>
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} className="table">
+        <SearchFeild userData={userData} setFilteredData={setFiltredData} />
+      </Box>
+      <Box>
+        <TableContainer className="tableContainer">
+          <Table>
             <TableHead>
-              <TableRow className="row-header-container">
+              <TableRow>
                 <TableCell align="center">
-                  <Checkbox onClick={handleAllSelect()} />
+                  <Checkbox
+                    checked={
+                      !!(
+                        filteredData.length &&
+                        filteredData
+                          .slice(start, end)
+                          .every((user) => selectedId.includes(user.id))
+                      )
+                    }
+                    onClick={handleAllSelect}
+                  />
                 </TableCell>
-                <TableCell align="center" className="row-header">
+                <TableCell align="center" className="tableHeaderCell">
                   Name
                 </TableCell>
-                <TableCell align="center" variant="h1" row-header>
+                <TableCell align="center" className="tableHeaderCell">
                   Email
                 </TableCell>
-                <TableCell align="center" variant="h1" row-header>
+                <TableCell align="center" className="tableHeaderCell">
                   Role
                 </TableCell>
-                <TableCell align="center" variant="h1" row-header>
+                <TableCell align="center" className="tableHeaderCell">
                   Action
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               <UserTable
-                userData={userData.slice(startIndex, endIndex)}
+                userData={filteredData.slice(start, end)}
                 selectedId={selectedId}
                 handleRowSelect={handleRowSelect}
                 handleRowDelete={handleRowDelete}
@@ -102,15 +148,24 @@ const Body = () => {
         display="flex"
         justifyContent="space-between"
       >
-        <Button variant="outlined">Delete All</Button>
+        <Button
+          variant="outlined"
+          onClick={() => {
+            handleDeleteSelected();
+          }}
+        >
+          Delete All
+        </Button>
+
         <Pagination
-          count={Math.ceil(userData.length / rowsPerPage)}
+          count={Math.ceil(filteredData.length / rowsPerPage)}
           showFirstButton
           showLastButton
           page={currentPage}
           onChange={(e, page) => {
             setCurrentPage(page);
           }}
+          size="large"
         />
       </Box>
     </Box>

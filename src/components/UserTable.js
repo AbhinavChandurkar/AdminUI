@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { TableCell, TableRow, Checkbox, Button } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
@@ -23,18 +22,47 @@ const UserTable = ({
                 : "white",
             }}
           >
-            <TableCell component="th" scope="row" align="center">
+            <TableCell
+              component="th"
+              scope="row"
+              align="center"
+              sx={{ border: "none" }}
+            >
               <Checkbox
                 checked={selectedId.includes(row.id)}
                 onChange={() => handleRowSelect(row.id)}
               />
             </TableCell>
-            <TableCell component="th" scope="row" align="center">
+            <TableCell
+              component="th"
+              scope="row"
+              align="center"
+              sx={{ border: "none" }}
+            >
               {row.name}
             </TableCell>
-            <TableCell align="center">{row.email}</TableCell>
-            <TableCell align="center">{row.role}</TableCell>
-            <TableCell align="center">
+            <TableCell
+              component="th"
+              scope="row"
+              align="center"
+              sx={{ border: "none" }}
+            >
+              {row.email}
+            </TableCell>
+            <TableCell
+              component="th"
+              scope="row"
+              align="center"
+              sx={{ border: "none" }}
+            >
+              {row.role}
+            </TableCell>
+            <TableCell
+              component="th"
+              scope="row"
+              align="center"
+              sx={{ border: "none" }}
+            >
               <Button startIcon={<EditIcon />} style={{ color: "black" }} />
               <Button
                 startIcon={<DeleteOutlineIcon />}
@@ -48,7 +76,7 @@ const UserTable = ({
         ))
       ) : (
         <TableRow>
-          <TableCell colSpan={5} align="center">
+          <TableCell colSpan={5} align="center" sx={{ border: "none" }}>
             No Data was found
           </TableCell>
         </TableRow>

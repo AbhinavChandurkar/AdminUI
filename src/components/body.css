@@ -1,1 +1,15 @@
+/* styles.css */
 
+.tableContainer {
+  border: none;
+  background-color: #e6f1f5;
+}
+
+.css-1ndpvdd-MuiTableCell-root.tableHeaderCell {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.tableRow {
+  border: none;
+}

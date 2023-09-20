@@ -15,7 +15,6 @@ import {
   Pagination,
   Button,
 } from "@mui/material";
-import "./body.css";
 
 const Body = () => {
   const [userData, setUserData] = useState([]);
@@ -92,7 +91,12 @@ const Body = () => {
         <SearchFeild userData={userData} setFilteredData={setFiltredData} />
       </Box>
       <Box>
-        <TableContainer className="tableContainer">
+        <TableContainer
+          style={{
+            border: "none",
+            backgroundColor: "#e6f1f5",
+          }}
+        >
           <Table>
             <TableHead>
               <TableRow>
@@ -109,16 +113,40 @@ const Body = () => {
                     onClick={handleAllSelect}
                   />
                 </TableCell>
-                <TableCell align="center" className="tableHeaderCell">
+                <TableCell
+                  align="center"
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "1rem",
+                  }}
+                >
                   Name
                 </TableCell>
-                <TableCell align="center" className="tableHeaderCell">
+                <TableCell
+                  align="center"
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "1rem",
+                  }}
+                >
                   Email
                 </TableCell>
-                <TableCell align="center" className="tableHeaderCell">
+                <TableCell
+                  align="center"
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "1rem",
+                  }}
+                >
                   Role
                 </TableCell>
-                <TableCell align="center" className="tableHeaderCell">
+                <TableCell
+                  align="center"
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "1rem",
+                  }}
+                >
                   Action
                 </TableCell>
               </TableRow>
@@ -130,6 +158,7 @@ const Body = () => {
                 filteredData={filteredData}
                 setFiltredData={setFiltredData}
                 handleRowSelect={handleRowSelect}
+                setUserData={setUserData}
               />
             </TableBody>
           </Table>

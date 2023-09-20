@@ -16,6 +16,7 @@ const UserTable = ({
   handleRowSelect,
   filteredData,
   setFiltredData,
+  setUserData,
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [editData, setEditData] = useState({});
@@ -24,6 +25,7 @@ const UserTable = ({
   //logic for deleting data on the same row
   const handleRowDelete = (id) => {
     setFiltredData(filteredData.filter((user) => user.id !== id));
+    setUserData(filteredData.filter((user) => user.id !== id));
   };
 
   const handleRowEdit = (id) => {

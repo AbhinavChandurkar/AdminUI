@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import UserTable from "./UserTable";
 import SearchFeild from "./SearchFeild";
-
+import Pagination from "./Pagination";
 import {
   TableContainer,
   Table,
@@ -12,7 +12,6 @@ import {
   TableRow,
   Box,
   Checkbox,
-  Pagination,
   Button,
 } from "@mui/material";
 
@@ -75,9 +74,33 @@ const Body = () => {
 
   //Logic to remove multiple user entries by one button
   const handleDeleteSelected = () => {
-    setFiltredData((item) =>
-      item.filter((user) => !selectedId.includes(user.id))
-    );
+    const data = filteredData.filter((user) => !selectedId.includes(user.id));
+
+    setFiltredData(data);
+    setUserData(data);
+    //No of pages after some of the user data is deleted
+    const updatedPages = Math.ceil(data.length / rowsPerPage);
+
+    // if data is deleted from the last page set it to the new last page
+    if (currentPage > updatedPages) setCurrentPage(updatedPages);
+
+    setSelectedId([]);
+  };
+
+  //logic for deleting data on the same row
+  const handleRowDelete = (id) => {
+    const updatedFilteredData = filteredData.filter((user) => user.id !== id);
+
+    setFiltredData(updatedFilteredData);
+    setUserData(userData.filter((user) => user.id !== id));
+
+    //No of pages after some of the user data is deleted
+    const updatedPages = Math.ceil(updatedFilteredData.length / rowsPerPage);
+
+    // if data is deleted from the last page set it to the new last page
+    if (currentPage > updatedPages) {
+      setCurrentPage(updatedPages);
+    }
   };
 
   //Fetching the data from the api after all compoenets are loaded
@@ -88,7 +111,11 @@ const Body = () => {
   return (
     <Box p={3} m={2}>
       <Box>
-        <SearchFeild userData={userData} setFilteredData={setFiltredData} />
+        <SearchFeild
+          userData={userData}
+          setFilteredData={setFiltredData}
+          setCurrentPage={setCurrentPage}
+        />
       </Box>
       <Box>
         <TableContainer
@@ -159,38 +186,36 @@ const Body = () => {
                 setFiltredData={setFiltredData}
                 handleRowSelect={handleRowSelect}
                 setUserData={setUserData}
+                handleRowDelete={handleRowDelete}
               />
             </TableBody>
           </Table>
         </TableContainer>
       </Box>
-      <Box
-        alignItems="center"
-        p={5}
-        m={2}
-        display="flex"
-        justifyContent="space-between"
-      >
-        <Button
-          variant="outlined"
-          onClick={() => {
-            handleDeleteSelected();
-          }}
+      {filteredData.length > 0 && (
+        <Box
+          alignItems="center"
+          p={5}
+          m={2}
+          display="flex"
+          justifyContent="space-between"
         >
-          Delete All
-        </Button>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              handleDeleteSelected();
+            }}
+          >
+            Delete All
+          </Button>
 
-        <Pagination
-          count={Math.ceil(filteredData.length / rowsPerPage)}
-          showFirstButton
-          showLastButton
-          page={currentPage}
-          onChange={(e, page) => {
-            setCurrentPage(page);
-          }}
-          size="large"
-        />
-      </Box>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={Math.ceil(filteredData.length / rowsPerPage)}
+            onPageChange={(page) => setCurrentPage(page)}
+          />
+        </Box>
+      )}
     </Box>
   );
 };

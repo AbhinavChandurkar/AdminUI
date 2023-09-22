@@ -17,43 +17,35 @@ const UserTable = ({
   filteredData,
   setFiltredData,
   setUserData,
+  handleRowDelete,
 }) => {
-  const [editMode, setEditMode] = useState(false);
   const [editData, setEditData] = useState({});
   const [editingId, setEditingId] = useState(null);
 
-  //logic for deleting data on the same row
-  const handleRowDelete = (id) => {
-    setFiltredData(filteredData.filter((user) => user.id !== id));
-    setUserData(filteredData.filter((user) => user.id !== id));
-  };
-
   const handleRowEdit = (id) => {
-    //Add the logic to take the data from the feild and passit to the ha
+    //Selecting the row data and setting the default value to editData
     const editRow = userData.find((row) => row.id === id);
-    setEditMode(true);
+
     setEditingId(id);
     setEditData(editRow);
   };
 
   const handleSaveData = () => {
     //logic to save the changes made to the filtred Data
-    setFiltredData((prevData) =>
-      prevData.map((row) => (row.id === editingId ? editData : row))
-    );
-
-    setEditMode(false);
+    if (editData.name.trim() !== "" && editData.email.trim() !== "") {
+      setFiltredData((prevData) =>
+        prevData.map((row) => (row.id === editingId ? editData : row))
+      );
+    }
     setEditingId(null);
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    if (value.trim() === "") {
-      setEditData((prevData) => ({
-        ...prevData,
-        [name]: value.trim(),
-      }));
-    }
+    setEditData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   return (

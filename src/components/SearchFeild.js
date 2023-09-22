@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-const SearchFeild = ({ userData, setFilteredData }) => {
+const SearchFeild = ({ userData, setFilteredData, setCurrentPage }) => {
   const [debounceTimeout, setDebounceTimeout] = useState(null);
 
   //Main filter logic
   const performSearch = async (text) => {
+    //Condtion if user is searching for the user not from 1 page
+    setCurrentPage(1);
+
     //checking if the provided input consit of only blank space
     if (!text.trim()) {
       setFilteredData(userData);

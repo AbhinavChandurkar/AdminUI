@@ -1,4 +1,10 @@
 import React from "react";
+import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
+import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
+import { Box } from "@mui/material";
+import "./style.css";
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const pages = [];
@@ -15,49 +21,53 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   };
 
   return (
-    <div>
+    <Box className="pagination">
       <button
+        className="button"
         onClick={() => {
           handleFirstPage();
         }}
         disabled={currentPage === 1}
       >
-        First
+        <KeyboardDoubleArrowLeftIcon />
       </button>
       <button
+        className="button"
         onClick={() => {
           onPageChange(currentPage - 1);
         }}
         disabled={currentPage === 1}
       >
-        prev
+        <NavigateBeforeIcon />
       </button>
       {pages.map((page) => (
         <button
           key={page}
           onClick={() => onPageChange(page)}
-          className={currentPage === page ? "active" : ""}
+          className={currentPage === page ? "activeButton" : "button"}
         >
           {page}
         </button>
       ))}
       <button
+        className="button"
         onClick={() => {
           onPageChange(currentPage + 1);
         }}
         disabled={currentPage === totalPages}
       >
-        Next
+        <NavigateNextIcon />
       </button>
       <button
+        className="button"
         onClick={() => {
           handleLastPage();
         }}
         disabled={currentPage === totalPages}
       >
-        Last
+        <KeyboardDoubleArrowRightIcon />
       </button>
-    </div>
+    </Box>
   );
 };
 

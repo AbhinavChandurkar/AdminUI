@@ -20,9 +20,6 @@ const Body = () => {
   const [selectedId, setSelectedId] = useState([]);
   const [filteredData, setFiltredData] = useState([]);
 
-  /**
-   *  pagination hooks
-   */
   const rowsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
   const start = (currentPage - 1) * rowsPerPage;
@@ -103,7 +100,7 @@ const Body = () => {
     }
   };
 
-  //Fetching the data from the api after all compoenets are loaded
+  //Fetching the data from the api after all componets are loaded
   useEffect(() => {
     getUserData();
   }, []);
@@ -115,6 +112,7 @@ const Body = () => {
           userData={userData}
           setFilteredData={setFiltredData}
           setCurrentPage={setCurrentPage}
+          setUserData={setUserData}
         />
       </Box>
       <Box>

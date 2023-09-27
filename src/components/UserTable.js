@@ -14,10 +14,9 @@ const UserTable = ({
   userData,
   selectedId,
   handleRowSelect,
-  filteredData,
   setFiltredData,
-  setUserData,
   handleRowDelete,
+  setUserData,
 }) => {
   const [editData, setEditData] = useState({});
   const [editingId, setEditingId] = useState(null);
@@ -31,9 +30,13 @@ const UserTable = ({
   };
 
   const handleSaveData = () => {
-    //logic to save the changes made to the filtred Data
+    //logic to save the changes made to the filtred Data only if its not empty
     if (editData.name.trim() !== "" && editData.email.trim() !== "") {
       setFiltredData((prevData) =>
+        prevData.map((row) => (row.id === editingId ? editData : row))
+      );
+      //Making the change in the userData so we can use updated value to search user
+      setUserData((prevData) =>
         prevData.map((row) => (row.id === editingId ? editData : row))
       );
     }

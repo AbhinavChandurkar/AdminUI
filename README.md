@@ -97,7 +97,7 @@ That's it! You're officially a deploy master now. If you have any hiccups, don't
 
 Check out the live version of this project: [Admin UI Live Demo](https://adminui-5cba6f.netlify.app/)
 
-## Screenshots
+<!-- ## Screenshots
 
 These are the screenshots of my project.
 
@@ -123,7 +123,7 @@ These are the screenshots of my project.
 
 ### Edit Functionality
 
-![Screenshot 6](./screenshots/editclick.png)
+![Screenshot 6](./screenshots/editclick.png) -->
 
 ## Contact Me 📬
 

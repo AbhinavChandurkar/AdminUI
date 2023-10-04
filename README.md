@@ -1,6 +1,40 @@
-# Getting Started with Create React App
+# Admin UI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hey there! This is a simple Admin User Interface I put together using React and Material-UI. It's got some cool features like pagination, easy editing, and deleting options, plus a handy search bar!
+
+## About this Project
+
+I developed this Admin UI to address the requirements of the Geektrust challenge. The main features of this UI include:
+
+- Pagination for managing a large dataset.
+- Edit and delete buttons for individual entries.
+- In-memory operations for edit and delete functionality.
+
+Feel free to raise a PR if you find any bugs.
+
+## Project Requirements (from [Geektrust Challenge](https://www.geektrust.com/coding/detailed/admin-ui))
+
+📋 **User Interface Requirements**
+
+1. Column titles must stand out from the entries.
+2. A search bar should be available for filtering based on any property.
+3. Rows should be editable and deletable in-place (in-memory operations only).
+4. Pagination should be implemented, with each page containing 10 rows. Pagination buttons should dynamically adjust based on search/filtering results.
+
+🔄 **Data Handling**
+
+- Users are provided via an API and are sorted by their `id` field (no alphabetical sorting).
+- API Endpoint: [Users API](https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json)
+- Request Type: GET
+
+🖱️ **Row Selection**
+
+- Users should be able to select one or more rows. A selected row will be highlighted with a grayish background.
+- A checkbox in the top left allows for quick selection or deselection of all displayed rows (limited to the current page).
+
+🗑️ **Bulk Deletion**
+
+- Multiple selected rows can be deleted at once using the 'Delete Selected' button at the bottom left.
 
 ## Available Scripts
 
@@ -29,42 +63,68 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Deploying to Netlify: A Student's Guide
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Alright, so I'm gonna walk you through how I got this project up and running on Netlify. It's actually pretty straightforward:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. **Sign Up on Netlify**:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   - First things first, you'll need a Netlify account. So, go ahead and [sign up](https://app.netlify.com/signup) if you haven't already.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. **Connect to GitHub**:
 
-## Learn More
+   - In the Netlify dashboard, there's this cool button that says "New site from Git". Click on that.
+   - You'll need to connect your GitHub account. Don't worry, it's safe and sound.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. **Pick Your Repo**:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   - Once you're connected, you'll see a list of your GitHub repositories. Choose the one you want to deploy.
 
-### Code Splitting
+4. **Configure Build Settings**:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   - Okay, here's a bit of tech stuff. In the deploy settings, you wanna set the build command to `npm run build` and the publish directory to `build`. This makes sure everything gets set up right.
 
-### Analyzing the Bundle Size
+5. **Deploy Away**:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   - Click on that "Deploy site" button and watch the magic happen! Netlify will take care of the rest.
 
-### Making a Progressive Web App
+6. **Voilà!**:
+   - Once it's done, your project will be live. They'll give you a special link to see it in action.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+That's it! You're officially a deploy master now. If you have any hiccups, don't hesitate to hit me up.
 
-### Advanced Configuration
+## Live Demo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Check out the live version of this project: [Admin UI Live Demo](https://adminui-5cba6f.netlify.app/)
 
-### Deployment
+## Screenshots
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+These are the screenshots of my project.
 
-### `npm run build` fails to minify
+### Homepage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Screenshot 1](./screenshots/homepage.PNG)
+
+### Last Page
+
+![Screenshot 2](./screenshots/lastpage.PNG)
+
+### Multiple Selection
+
+![Screenshot 3](./screenshots/multipleselect.PNG)
+
+### Search Functionality
+
+![Screenshot 4](./screenshots/search.PNG)
+
+### All Data Deleted
+
+![Screenshot 5](./screenshots/alldatadeleted.PNG)
+
+### Edit Functionality
+
+![Screenshot 6](./screenshots/editclick.PNG)
+
+## Contact Me 📬
+
+Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/abhinav-chandurkar-023126193/)!

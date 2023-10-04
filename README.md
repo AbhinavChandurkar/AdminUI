@@ -103,27 +103,27 @@ These are the screenshots of my project.
 
 ### Homepage
 
-![Screenshot 1](./screenshots/homepage.PNG)
+![Screenshot 1](./screenshots/homepage.png)
 
 ### Last Page
 
-![Screenshot 2](./screenshots/lastpage.PNG)
+![Screenshot 2](./screenshots/lastpage.png)
 
 ### Multiple Selection
 
-![Screenshot 3](./screenshots/multipleselect.PNG)
+![Screenshot 3](./screenshots/multipleselect.png)
 
 ### Search Functionality
 
-![Screenshot 4](./screenshots/search.PNG)
+![Screenshot 4](./screenshots/search.png)
 
 ### All Data Deleted
 
-![Screenshot 5](./screenshots/alldatadeleted.PNG)
+![Screenshot 5](./screenshots/alldatadeleted.png)
 
 ### Edit Functionality
 
-![Screenshot 6](./screenshots/editclick.PNG)
+![Screenshot 6](./screenshots/editclick.png)
 
 ## Contact Me 📬
 

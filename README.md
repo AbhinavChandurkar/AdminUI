@@ -107,7 +107,7 @@ These are the screenshots of my project.
 
 ### Last Page
 
-![Screenshot 2](./screenshots/lastpage.png)
+![lastpage](https://github.com/AbhinavChandurkar/AdminUI/assets/62837490/7b2673bf-5fca-4e01-9a8f-f7d0ee97719c)
 
 ### Multiple Selection
 

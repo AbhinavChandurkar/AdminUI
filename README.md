@@ -97,13 +97,13 @@ That's it! You're officially a deploy master now. If you have any hiccups, don't
 
 Check out the live version of this project: [Admin UI Live Demo](https://adminui-5cba6f.netlify.app/)
 
-<!-- ## Screenshots
+## Screenshots
 
 These are the screenshots of my project.
 
 ### Homepage
 
-![Screenshot 1](./screenshots/homepage.png)
+![homepage](https://github.com/AbhinavChandurkar/AdminUI/assets/62837490/bb1317d5-93c6-4541-85f2-ea043687a2e6)
 
 ### Last Page
 
@@ -111,19 +111,23 @@ These are the screenshots of my project.
 
 ### Multiple Selection
 
-![Screenshot 3](./screenshots/multipleselect.png)
+![multipleselect](https://github.com/AbhinavChandurkar/AdminUI/assets/62837490/d245925a-a24d-4bb3-bd8f-923ef90ee627)
+
 
 ### Search Functionality
 
-![Screenshot 4](./screenshots/search.png)
+![search](https://github.com/AbhinavChandurkar/AdminUI/assets/62837490/be70b133-9eaf-41fb-92fb-3564ae147a73)
+
 
 ### All Data Deleted
 
-![Screenshot 5](./screenshots/alldatadeleted.png)
+![alldatadeleted](https://github.com/AbhinavChandurkar/AdminUI/assets/62837490/9975d02e-e372-43bd-968b-a123b6dac749)
+
 
 ### Edit Functionality
 
-![Screenshot 6](./screenshots/editclick.png) -->
+![editclick](https://github.com/AbhinavChandurkar/AdminUI/assets/62837490/fad4efb2-8bc1-4ef3-b37a-ff0514325ad5)
+
 
 ## Contact Me 📬
 
